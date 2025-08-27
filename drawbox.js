@@ -26,33 +26,7 @@ const DISPLAY_IMAGES = true;
 */
 
 
-// Brush shape functionality
-let brush_shape = "round";
 
-function setBrushShape(shape) {
-    brush_shape = shape;
-    // Update button styles to show which is active
-    document.getElementById("round-brush").style.backgroundColor = shape === "round" ? "#ddd" : "";
-    document.getElementById("square-brush").style.backgroundColor = shape === "square" ? "#ddd" : "";
-}
-
-// Eraser functionality
-let is_erasing = false;
-
-function toggleEraser() {
-    is_erasing = !is_erasing;
-    const eraserBtn = document.getElementById("eraser-btn");
-    
-    if (is_erasing) {
-        eraserBtn.style.backgroundColor = "#ffcccc";
-        eraserBtn.textContent = "🧽 Drawing";
-        canvas.style.cursor = "grab";
-    } else {
-        eraserBtn.style.backgroundColor = "";
-        eraserBtn.textContent = "🧽 Eraser";
-        canvas.style.cursor = "crosshair";
-    }
-}
 
 
 
@@ -337,6 +311,33 @@ async function fetchImages() {
 fetchImages();
 
 
+// Brush shape functionality
+let brush_shape = "round";
+
+function setBrushShape(shape) {
+    brush_shape = shape;
+    // Update button styles to show which is active
+    document.getElementById("round-brush").style.backgroundColor = shape === "round" ? "#ddd" : "";
+    document.getElementById("square-brush").style.backgroundColor = shape === "square" ? "#ddd" : "";
+}
+
+// Eraser functionality
+let is_erasing = false;
+
+function toggleEraser() {
+    is_erasing = !is_erasing;
+    const eraserBtn = document.getElementById("eraser-btn");
+    
+    if (is_erasing) {
+        eraserBtn.style.backgroundColor = "#ffcccc";
+        eraserBtn.textContent = "🧽 Drawing";
+        canvas.style.cursor = "grab";
+    } else {
+        eraserBtn.style.backgroundColor = "";
+        eraserBtn.textContent = "🧽 Eraser";
+        canvas.style.cursor = "crosshair";
+    }
+}
 
 
 
