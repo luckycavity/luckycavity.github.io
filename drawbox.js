@@ -115,6 +115,22 @@ context.drawImage = function() {
 document.getElementById("submit").addEventListener("click", async function () {
   const submitButton = document.getElementById("submit");
   const statusText = document.getElementById("status");
+  
+  // Get the form values
+  const artistName = document.getElementById("artist-name").value.trim();
+  const artistWebsite = document.getElementById("artist-website").value.trim();
+  const spamCheck = document.getElementById("spam-check").value.trim();
+  
+  // Check if required fields are filled
+  if (!artistName) {
+    alert("Please enter your name!");
+    return;
+  }
+  
+  if (spamCheck.toLowerCase() !== "guestbook") {
+    alert("Please enter 'guestbook' in the spam blocker field!");
+    return;
+  }
 
   submitButton.disabled = true;
   statusText.textContent = "Uploading...";
@@ -137,8 +153,17 @@ document.getElementById("submit").addEventListener("click", async function () {
     const imageUrl = data.data.link;
     console.log("Uploaded image URL:", imageUrl);
 
+    // Create the submission data with name and website
+    let submissionData = imageUrl;
+    if (artistName) {
+      submissionData += " | " + artistName;
+    }
+    if (artistWebsite) {
+      submissionData += " | " + artistWebsite;
+    }
+
     const googleFormData = new FormData();
-    googleFormData.append(ENTRY_ID, imageUrl);
+    googleFormData.append(ENTRY_ID, submissionData);
 
     await fetch(GOOGLE_FORM_URL, {
       method: "POST",
@@ -222,6 +247,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
