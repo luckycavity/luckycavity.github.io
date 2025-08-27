@@ -25,6 +25,41 @@ const DISPLAY_IMAGES = true;
         
 */
 
+
+// Brush shape functionality
+let brush_shape = "round";
+
+function setBrushShape(shape) {
+    brush_shape = shape;
+    // Update button styles to show which is active
+    document.getElementById("round-brush").style.backgroundColor = shape === "round" ? "#ddd" : "";
+    document.getElementById("square-brush").style.backgroundColor = shape === "square" ? "#ddd" : "";
+}
+
+// Eraser functionality
+let is_erasing = false;
+
+function toggleEraser() {
+    is_erasing = !is_erasing;
+    const eraserBtn = document.getElementById("eraser-btn");
+    
+    if (is_erasing) {
+        eraserBtn.style.backgroundColor = "#ffcccc";
+        eraserBtn.textContent = "🧽 Drawing";
+        canvas.style.cursor = "grab";
+    } else {
+        eraserBtn.style.backgroundColor = "";
+        eraserBtn.textContent = "🧽 Eraser";
+        canvas.style.cursor = "crosshair";
+    }
+}
+
+
+
+
+
+
+
 const CLIENT_ID = "b4fb95e0edc434c";
 const GOOGLE_SHEET_URL = "https://docs.google.com/spreadsheets/d/" + GOOGLE_SHEET_ID + "/export?format=csv";
 const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/e/" + GOOGLE_FORM_ID + "/formResponse";
@@ -54,11 +89,35 @@ function start(event) {
 function draw(event) {
   if (!is_drawing) return;
   context.lineTo(getX(event), getY(event));
-  context.strokeStyle = stroke_color;
+	
+  if (!is_erasing) {
+    context.strokeStyle = stroke_color;
+  }
+	
   context.lineWidth = stroke_width;
-  context.lineCap = "round";
-  context.lineJoin = "round";
+
+
+	// Handle brush shape
+  if (brush_shape === "round") {
+    context.lineCap = "round";
+    context.lineJoin = "round";
+  } else {
+    context.lineCap = "square";
+    context.lineJoin = "miter";
+  }
+  
+  // Handle eraser vs drawing
+  if (is_erasing) {
+    context.globalCompositeOperation = "destination-out";
+  } else {
+    context.globalCompositeOperation = "source-over";
+  }
+  
   context.stroke();
+
+
+
+	
   event.preventDefault();
 }
 
@@ -268,6 +327,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
