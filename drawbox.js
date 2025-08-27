@@ -86,18 +86,25 @@ function start(event) {
   event.preventDefault();
 }
 
+
+
+
 function draw(event) {
   if (!is_drawing) return;
   context.lineTo(getX(event), getY(event));
-	
-  if (!is_erasing) {
+  
+  // Handle eraser vs drawing (this needs to come first)
+  if (is_erasing) {
+    context.globalCompositeOperation = "destination-out";
+    context.strokeStyle = "rgba(0,0,0,1)"; // For eraser, color doesn't matter but we need something
+  } else {
+    context.globalCompositeOperation = "source-over";
     context.strokeStyle = stroke_color;
   }
-	
+  
   context.lineWidth = stroke_width;
-
-
-	// Handle brush shape
+  
+  // Handle brush shape
   if (brush_shape === "round") {
     context.lineCap = "round";
     context.lineJoin = "round";
@@ -106,20 +113,13 @@ function draw(event) {
     context.lineJoin = "miter";
   }
   
-  // Handle eraser vs drawing
-  if (is_erasing) {
-    context.globalCompositeOperation = "destination-out";
-  } else {
-    context.globalCompositeOperation = "source-over";
-  }
-  
   context.stroke();
-
-
-
-	
   event.preventDefault();
 }
+
+
+
+
 
 function stop(event) {
   if (!is_drawing) return;
@@ -327,6 +327,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
