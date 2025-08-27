@@ -157,40 +157,58 @@
 </style>
 </head>
 <body>
-    <h1>DRAWBOX</h1>
-    <canvas id="drawboxcanvas" width="500" height="500"></canvas>
-    <br>
-    <div onclick="change_color(this)" style="background:red" class="stroke-color"></div>
-    <div onclick="change_color(this)" style="background:blue" class="stroke-color"></div>
-    
-    <button onclick="Restore()">Undo</button>
-    <button onclick="Clear()">Clear</button>
-    
-    <input type="color" oninput="stroke_color = this.value">
-    <input type="range" min="1" max="100" oninput="stroke_width = this.value">
-    
-    <div id="submission-form">
-    <h3>Submit Your Drawing</h3>
-    
-    <label for="artist-name">Your Name (required):</label>
-    <input type="text" id="artist-name" required>
-    
-    <label for="artist-website">Your website (optional):</label>
-    <input type="text" id="artist-website" placeholder="https://yoursite.com">
-    
-    <label for="spam-check">Spam bot blocker - Please enter the word "guestbook" below, lovely human. We don't think that the 🤖spam bots🤖 will figure this out. Thank you!</label>
-    <input type="text" id="spam-check" required>
-    
-    <button id="submit">Submit drawing</button>
-</div>
-    <p id="status"></p>
-
-	
-    <h1>Submitted Drawings ☻</h1>
-    <div id="gallery">Loading images...</div>
-    
+    <div class="main-wrapper">
+        <div class="content-grid">
+            <div class="drawbox-section">
+                <h1>DRAWBOX</h1>
+                <canvas id="drawboxcanvas" width="500" height="500"></canvas>
+                <br>
+                <div onclick="change_color(this)" style="background:red" class="stroke-color"></div>
+                <div onclick="change_color(this)" style="background:blue" class="stroke-color"></div>
+                
+                <button onclick="Restore()">Undo</button>
+                <button onclick="Clear()">Clear</button>
+                
+                <input type="color" oninput="stroke_color = this.value">
+                <input type="range" min="1" max="100" oninput="stroke_width = this.value">
+                
+                <div id="submission-form">
+                    <h3>Submit Your Drawing</h3>
+                    
+                    <label for="artist-name">Your Name (required):</label>
+                    <input type="text" id="artist-name" required>
+                    
+                    <label for="artist-website">Your website (optional):</label>
+                    <input type="text" id="artist-website" placeholder="https://yoursite.com">
+                    
+                    <label for="spam-check">Spam check: please enter the word "guestbook" below. 🤖🔨</label>
+                    <input type="text" id="spam-check" required>
+                    
+                    <button id="submit">Submit drawing</button>
+                </div>
+                <p id="status"></p>
+            </div>
+            
+            <div class="info-section">
+                <h2>what is this?</h2>
+                <p>This is a collaborative drawing space! Create your artwork and share it with others. Your drawing will appear in the gallery below.</p>
+                
+                <p><strong>How to use:</strong></p>
+                <ul>
+                    <li>Draw with your mouse or finger</li>
+                    <li>Pick colors and adjust brush size</li>
+                    <li>Use undo to fix mistakes</li>
+                    <li>Add your name and submit!</li>
+                </ul>
+                
+               
+            </div>
+        </div>
+        
+        <h1>Submitted Drawings ☻</h1>
+        <div id="gallery">Loading images...</div>
+    </div>
     
     <script src="drawbox.js"></script>
-
 </body>
 </html>
