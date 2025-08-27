@@ -126,10 +126,18 @@ function stop(event) {
   context.stroke();
   context.closePath();
   is_drawing = false;
+  
+  // Reset composite operation to normal after drawing
+  context.globalCompositeOperation = "source-over";
+  
   restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
   start_index++;
   event.preventDefault();
 }
+
+
+
+
 
 function getX(event) {
   return event.pageX
@@ -327,6 +335,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
