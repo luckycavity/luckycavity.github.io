@@ -12,8 +12,8 @@
 				     `\\´´\¸.·´
         
 */
-const GOOGLE_FORM_ID = "1hGQpZviRG5cMAKlJQGM6DHxPwWFhsNoaoeewky5Y9O0";
-const ENTRY_ID = "entry.631782789";
+const GOOGLE_FORM_ID = "1hGQpZviRG5cMAKlJQGM6DHxPwWFhsNoaoeewky5Y9O0"; 
+const ENTRY_ID = "entry.631782789"; 
 const GOOGLE_SHEET_ID = "1dN0pQil-kXFhyQ6RmaGOa0RWFwaEKtns2oPEQv6sMiE";
 const DISPLAY_IMAGES = true;
 
@@ -222,6 +222,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
