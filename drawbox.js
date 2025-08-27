@@ -12,9 +12,9 @@
 				     `\\´´\¸.·´
         
 */
-const GOOGLE_FORM_ID = "1hGQpZviRG5cMAKlJQGM6DHxPwWFhsNoaoeewky5Y9O0"; 
-const ENTRY_ID = "entry.631782789"; 
-const GOOGLE_SHEET_ID = "1dN0pQil-kXFhyQ6RmaGOa0RWFwaEKtns2oPEQv6sMiE";
+const GOOGLE_FORM_ID = "1FAIpQLSc7gk7Ot8_wF9SchGaDx5xf_Pc5v-XU0d4s3hNw7BBeK8ZSuw"; 
+const ENTRY_ID = "entry.1369949347"; 
+const GOOGLE_SHEET_ID = "11w2LvZuljHliPFVvejbYIbyd_mXpcWefKuzUa8cVbnI";
 const DISPLAY_IMAGES = true;
 
 /*
@@ -222,6 +222,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
