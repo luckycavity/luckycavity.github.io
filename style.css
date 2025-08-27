@@ -1,0 +1,149 @@
+* {box-sizing: border-box;}
+        
+        /* Main responsive layout */
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .drawbox-section {
+            min-width: 0;
+        }
+
+        .info-section {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            height: fit-content;
+        }
+
+        .info-section h2 {
+            margin-top: 0;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .info-section p, .info-section li {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #666;
+        }
+        
+        canvas {
+            border: 1px solid black;
+            cursor: crosshair;
+        }
+        
+        #gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .image-container {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            max-width: 200px;
+            text-align: center;
+            background-color: #f9f9f9;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        
+        .artist-line {
+            font-weight: bold;
+            margin: 4px 0;
+            font-size: 14px;
+        }
+        
+        .timestamp {
+            font-size: 11px;
+            color: #666;
+            margin: 4px 0 0 0;
+        }
+        
+        .artist-line a {
+            font-weight: normal;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        .artist-line a:hover {
+            text-decoration: underline;
+        }
+        
+        #submission-form {
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        
+        #submission-form label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        
+        #submission-form input {
+            width: 100%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        #submission-form button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .info-section {
+                order: -1;
+            }
+            
+            canvas {
+                max-width: 100%;
+                height: auto;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .main-wrapper {
+                padding: 10px;
+            }
+            
+            canvas {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
