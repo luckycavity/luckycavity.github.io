@@ -235,15 +235,16 @@ async function fetchImages() {
         const div = document.createElement("div");
         div.classList.add("image-container");
 
-        let websiteLink = "";
+        // Format the artist line with optional website
+        let artistLine = artistName;
         if (artistWebsite && artistWebsite.startsWith("http")) {
-          websiteLink = `<br><a href="${artistWebsite}" target="_blank">🌐 Website</a>`;
+          artistLine += ` ▪ <a href="${artistWebsite}" target="_blank">website</a>`;
         }
 
         div.innerHTML = `
                     <img src="${imgUrl}" alt="drawing by ${artistName}">
-                    <p><strong>By: ${artistName}</strong>${websiteLink}</p>
-                    <p><small>${timestamp}</small></p>
+                    <p class="artist-line">${artistLine}</p>
+                    <p class="timestamp">${timestamp}</p>
                 `;
         gallery.appendChild(div);
         console.log("Added image to gallery");
@@ -258,6 +259,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
