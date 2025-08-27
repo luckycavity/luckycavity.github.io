@@ -55,8 +55,26 @@ function change_color(element) {
 
 function start(event) {
   is_drawing = true;
-  context.beginPath();
-  context.moveTo(getX(event), getY(event));
+  
+  const startX = getX(event);
+  const startY = getY(event);
+  
+  if (brush_shape === "square") {
+    // For square brush, just draw the first square
+    const size = stroke_width;
+    if (is_erasing) {
+      context.globalCompositeOperation = "destination-out";
+    } else {
+      context.globalCompositeOperation = "source-over";
+      context.fillStyle = stroke_color;
+    }
+    context.fillRect(startX - size/2, startY - size/2, size, size);
+  } else {
+    // For round brush, start the path
+    context.beginPath();
+    context.moveTo(startX, startY);
+  }
+  
   event.preventDefault();
 }
 
@@ -65,29 +83,33 @@ function start(event) {
 
 function draw(event) {
   if (!is_drawing) return;
-  context.lineTo(getX(event), getY(event));
   
-  // Handle eraser vs drawing (this needs to come first)
+  const currentX = getX(event);
+  const currentY = getY(event);
+  
+  // Handle eraser vs drawing
   if (is_erasing) {
     context.globalCompositeOperation = "destination-out";
-    context.strokeStyle = "rgba(0,0,0,1)"; // For eraser, color doesn't matter but we need something
+    context.strokeStyle = "rgba(0,0,0,1)";
   } else {
     context.globalCompositeOperation = "source-over";
     context.strokeStyle = stroke_color;
+    context.fillStyle = stroke_color;
   }
   
-  context.lineWidth = stroke_width;
-  
-  // Handle brush shape
-  if (brush_shape === "round") {
+  if (brush_shape === "square") {
+    // Draw square brush (always 0 degrees)
+    const size = stroke_width;
+    context.fillRect(currentX - size/2, currentY - size/2, size, size);
+  } else {
+    // Draw round brush (original line method)
+    context.lineTo(currentX, currentY);
+    context.lineWidth = stroke_width;
     context.lineCap = "round";
     context.lineJoin = "round";
-  } else {
-    context.lineCap = "square";
-    context.lineJoin = "miter";
+    context.stroke();
   }
   
-  context.stroke();
   event.preventDefault();
 }
 
@@ -338,6 +360,7 @@ function toggleEraser() {
         canvas.style.cursor = "crosshair";
     }
 }
+
 
 
 
