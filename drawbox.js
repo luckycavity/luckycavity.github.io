@@ -165,18 +165,41 @@ async function fetchImages() {
   }
 
   try {
+    console.log("Fetching from URL:", GOOGLE_SHEET_URL);
     const response = await fetch(GOOGLE_SHEET_URL);
+    console.log("Response status:", response.status);
+    
     const csvText = await response.text();
+    console.log("CSV data received:", csvText);
+    
     const rows = csvText.split("\n").slice(1);
+    console.log("Rows after splitting:", rows);
 
     const gallery = document.getElementById("gallery");
     gallery.innerHTML = "";
-    rows.reverse().forEach((row) => {
+    
+    if (rows.length === 0 || (rows.length === 1 && rows[0].trim() === "")) {
+      console.log("No data rows found");
+      gallery.innerHTML = "No images submitted yet.";
+      return;
+    }
+    
+    rows.reverse().forEach((row, index) => {
+      console.log(`Processing row ${index}:`, row);
+      
       const columns = row.split(",");
-      if (columns.length < 2) return;
+      console.log("Columns:", columns);
+      
+      if (columns.length < 2) {
+        console.log("Skipping row - not enough columns");
+        return;
+      }
 
       const timestamp = columns[0].trim();
       const imgUrl = columns[1].trim().replace(/"/g, "");
+      
+      console.log("Timestamp:", timestamp);
+      console.log("Image URL:", imgUrl);
 
       if (imgUrl.startsWith("http")) {
         const div = document.createElement("div");
@@ -187,6 +210,9 @@ async function fetchImages() {
                     <p>${timestamp}</p>
                 `;
         gallery.appendChild(div);
+        console.log("Added image to gallery");
+      } else {
+        console.log("Skipping - not a valid URL:", imgUrl);
       }
     });
   } catch (error) {
@@ -196,6 +222,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
