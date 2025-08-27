@@ -27,6 +27,39 @@
             display: block;
         }
 
+
+		#submission-form {
+    margin: 20px 0;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#submission-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#submission-form input {
+    width: 100%;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+#submission-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
@@ -42,7 +75,20 @@
     <input type="color" oninput="stroke_color = this.value">
     <input type="range" min="1" max="100" oninput="stroke_width = this.value">
     
+    <div id="submission-form">
+    <h3>Submit Your Drawing</h3>
+    
+    <label for="artist-name">Your Name (required):</label>
+    <input type="text" id="artist-name" required>
+    
+    <label for="artist-website">Your website (optional):</label>
+    <input type="text" id="artist-website" placeholder="https://yoursite.com">
+    
+    <label for="spam-check">Spam bot blocker - Please enter the word "guestbook" below, lovely human. We don't think that the 🤖spam bots🤖 will figure this out. Thank you!</label>
+    <input type="text" id="spam-check" required>
+    
     <button id="submit">Submit drawing</button>
+</div>
     <p id="status"></p>
 
 	
