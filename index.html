@@ -14,15 +14,42 @@
             <div class="drawbox-section">
                 <h1>DRAWBOX</h1>
                 <canvas id="drawboxcanvas" width="500" height="500"></canvas>
-                <br>
-                <div onclick="change_color(this)" style="background:red" class="stroke-color"></div>
-                <div onclick="change_color(this)" style="background:blue" class="stroke-color"></div>
-                
-                <button onclick="Restore()">Undo</button>
-                <button onclick="Clear()">Clear</button>
-                
-                <input type="color" oninput="stroke_color = this.value">
-                <input type="range" min="1" max="100" oninput="stroke_width = this.value">
+
+<div class="drawing-tools">
+    <!-- Color Palette -->
+    <div class="tool-group">
+        <label>Colors:</label>
+        <div class="color-palette">
+            <div onclick="change_color(this)" style="background:#FF0000" class="color-btn"></div>
+            <div onclick="change_color(this)" style="background:#00FF00" class="color-btn"></div>
+            <div onclick="change_color(this)" style="background:#0066FF" class="color-btn"></div>
+            <div onclick="change_color(this)" style="background:#FFD700" class="color-btn"></div>
+            <div onclick="change_color(this)" style="background:#FF69B4" class="color-btn"></div>
+            <div onclick="change_color(this)" style="background:#8A2BE2" class="color-btn"></div>
+        </div>
+    </div>
+
+    <!-- Brush Size -->
+    <div class="tool-group">
+        <label>Size:</label>
+        <input type="range" min="1" max="100" value="2" oninput="stroke_width = this.value">
+    </div>
+
+    <!-- Brush Shape -->
+    <div class="tool-group">
+        <label>Shape:</label>
+        <button onclick="setBrushShape('round')" id="round-brush" class="shape-btn">●</button>
+        <button onclick="setBrushShape('square')" id="square-brush" class="shape-btn">■</button>
+    </div>
+
+    <!-- Tools -->
+    <div class="tool-group">
+        <label>Tools:</label>
+        <button onclick="toggleEraser()" id="eraser-btn" class="tool-btn">🧽</button>
+        <button onclick="Restore()" class="tool-btn">↶ Undo</button>
+        <button onclick="Clear()" class="tool-btn">✕ Clear</button>
+    </div>
+</div>
                 
                 <div id="submission-form">
                     <h3>Submit Your Drawing</h3>
