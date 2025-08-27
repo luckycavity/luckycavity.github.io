@@ -13,7 +13,9 @@
         
 */
 const GOOGLE_FORM_ID = "1FAIpQLSc7gk7Ot8_wF9SchGaDx5xf_Pc5v-XU0d4s3hNw7BBeK8ZSuw"; 
-const ENTRY_ID = "entry.1369949347"; 
+const IMAGE_ENTRY_ID = "entry.1369949347";
+const NAME_ENTRY_ID = "entry.15412514";      
+const WEBSITE_ENTRY_ID = "entry.306295053";  // Replace with new name field entry ID
 const GOOGLE_SHEET_ID = "11w2LvZuljHliPFVvejbYIbyd_mXpcWefKuzUa8cVbnI";
 const DISPLAY_IMAGES = true;
 
@@ -163,7 +165,11 @@ document.getElementById("submit").addEventListener("click", async function () {
     }
 
     const googleFormData = new FormData();
-    googleFormData.append(ENTRY_ID, submissionData);
+    googleFormData.append(IMAGE_ENTRY_ID, imageUrl);
+    googleFormData.append(NAME_ENTRY_ID, artistName);
+    if (artistWebsite) {
+      googleFormData.append(WEBSITE_ENTRY_ID, artistWebsite);
+    }
 
     await fetch(GOOGLE_FORM_URL, {
       method: "POST",
@@ -222,23 +228,28 @@ async function fetchImages() {
 
       const timestamp = columns[0].trim();
       const imgUrl = columns[1].trim().replace(/"/g, "");
+      const artistName = columns[2] ? columns[2].trim().replace(/"/g, "") : "Anonymous";
+      const artistWebsite = columns[3] ? columns[3].trim().replace(/"/g, "") : "";
       
-      console.log("Timestamp:", timestamp);
-      console.log("Image URL:", imgUrl);
-
       if (imgUrl.startsWith("http")) {
         const div = document.createElement("div");
         div.classList.add("image-container");
 
+        let websiteLink = "";
+        if (artistWebsite && artistWebsite.startsWith("http")) {
+          websiteLink = `<br><a href="${artistWebsite}" target="_blank">🌐 Website</a>`;
+        }
+
         div.innerHTML = `
-                    <img src="${imgUrl}" alt="drawing">
-                    <p>${timestamp}</p>
+                    <img src="${imgUrl}" alt="drawing by ${artistName}">
+                    <p><strong>By: ${artistName}</strong>${websiteLink}</p>
+                    <p><small>${timestamp}</small></p>
                 `;
         gallery.appendChild(div);
         console.log("Added image to gallery");
-      } else {
-        console.log("Skipping - not a valid URL:", imgUrl);
       }
+
+		
     });
   } catch (error) {
     console.error("Error fetching images:", error);
@@ -247,6 +258,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
