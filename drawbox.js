@@ -226,7 +226,16 @@ async function fetchImages() {
         return;
       }
 
-      const timestamp = columns[0].trim();
+      const rawTimestamp = columns[0].trim();
+		// Format timestamp from "8/26/2025 23:37:57" to "2025.08.26"
+		const date = new Date(rawTimestamp);
+		const year = date.getFullYear();
+		const month = String(date.getMonth() + 1).padStart(2, '0');
+		const day = String(date.getDate()).padStart(2, '0');
+		const timestamp = `${year}.${month}.${day}`;
+
+
+		
       const imgUrl = columns[1].trim().replace(/"/g, "");
       const artistName = columns[2] ? columns[2].trim().replace(/"/g, "") : "Anonymous";
       const artistWebsite = columns[3] ? columns[3].trim().replace(/"/g, "") : "";
@@ -259,6 +268,7 @@ async function fetchImages() {
 }
 
 fetchImages();
+
 
 
 
