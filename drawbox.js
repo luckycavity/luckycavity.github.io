@@ -1,4 +1,4 @@
-/*
+a/*
         
         FILL IN THESE VARIABLES BASED ON THE GUIDE AT https://drawbox.nekoweb.org
         
@@ -352,14 +352,15 @@ function toggleEraser() {
     
     if (is_erasing) {
         eraserBtn.style.backgroundColor = "#ffcccc";
-        eraserBtn.textContent = "🧽 Drawing";
+        eraserBtn.textContent = "🧽 Erasing";
         canvas.style.cursor = "grab";
     } else {
         eraserBtn.style.backgroundColor = "";
-        eraserBtn.textContent = "🧽 Eraser";
+        eraserBtn.textContent = "✏️ Drawing";
         canvas.style.cursor = "crosshair";
     }
 }
+
 
 
 
