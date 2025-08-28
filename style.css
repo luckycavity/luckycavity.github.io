@@ -244,3 +244,8 @@
         font-size: 11px;
     }
 }
+
+
+#drawboxcanvas {
+    touch-action: none; /* Prevents scrolling/zooming on the canvas */
+}
