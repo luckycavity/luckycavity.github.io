@@ -84,7 +84,7 @@ function draw(event) {
     context.lineJoin = "round";
   } else {
     context.lineCap = "square";
-    context.lineJoin = "miter";
+    context.lineJoin = "round";
   }
   
   context.stroke();
@@ -380,6 +380,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
