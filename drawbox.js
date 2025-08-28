@@ -114,15 +114,21 @@ function stop(event) {
 
 
 function getX(event) {
-  return event.pageX
-    ? event.pageX - canvas.offsetLeft
-    : event.targetTouches[0].pageX - canvas.offsetLeft;
+  const rect = canvas.getBoundingClientRect();
+  if (event.pageX) {
+    return event.pageX - rect.left;
+  } else {
+    return event.targetTouches[0].pageX - rect.left;
+  }
 }
 
 function getY(event) {
-  return event.pageY
-    ? event.pageY - canvas.offsetTop
-    : event.targetTouches[0].pageY - canvas.offsetTop;
+  const rect = canvas.getBoundingClientRect();
+  if (event.pageY) {
+    return event.pageY - rect.top;
+  } else {
+    return event.targetTouches[0].pageY - rect.top;
+  }
 }
 
 canvas.addEventListener("touchstart", start, false);
@@ -338,6 +344,7 @@ function toggleEraser() {
         canvas.style.cursor = "crosshair";
     }
 }
+
 
 
 
