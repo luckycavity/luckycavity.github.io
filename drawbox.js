@@ -49,14 +49,24 @@ let stroke_color = "black";
 let stroke_width = "2";
 let is_drawing = false;
 
+
+let lastX = 0;
+let lastY = 0;
+
 function change_color(element) {
   stroke_color = element.style.background;
 }
 
 function start(event) {
   is_drawing = true;
+  const x = getX(event);
+  const y = getY(event);
+  
+  lastX = x;
+  lastY = y;
+  
   context.beginPath();
-  context.moveTo(getX(event), getY(event));
+  context.moveTo(x, y);
   event.preventDefault();
 }
 
@@ -66,33 +76,71 @@ function start(event) {
 function draw(event) {
   if (!is_drawing) return;
   
-  const x = getX(event);
-  const y = getY(event);
+  const currentX = getX(event);
+  const currentY = getY(event);
   
-  // Handle eraser vs drawing
+  // Handle eraser vs drawing (this needs to come first)
   if (is_erasing) {
     context.globalCompositeOperation = "destination-out";
-    context.fillStyle = "rgba(0,0,0,1)";
+    context.strokeStyle = "rgba(0,0,0,1)"; // For eraser, color doesn't matter but we need something
   } else {
     context.globalCompositeOperation = "source-over";
-    context.fillStyle = stroke_color;
+    context.strokeStyle = stroke_color;
   }
+  
+  context.lineWidth = stroke_width;
   
   // Handle brush shape
   if (brush_shape === "round") {
-    // Draw round brush (circle)
-    context.beginPath();
-    context.arc(x, y, stroke_width / 2, 0, 2 * Math.PI);
-    context.fill();
+    // Use the original line drawing for round brush
+    context.lineTo(currentX, currentY);
+    context.lineCap = "round";
+    context.lineJoin = "round";
+    context.stroke();
   } else {
-    // Draw square brush (always axis-aligned)
-    const size = stroke_width;
-    context.fillRect(x - size/2, y - size/2, size, size);
+    // For square brush, draw filled squares along the path
+    drawSquarePath(lastX, lastY, currentX, currentY, stroke_width);
   }
+  
+  // Update last position
+  lastX = currentX;
+  lastY = currentY;
   
   event.preventDefault();
 }
 
+
+
+
+function drawSquarePath(x1, y1, x2, y2, size) {
+  const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+  const maxGap = size * 0.8; // Only fill gaps if they're bigger than 80% of square size
+  
+  if (distance > maxGap) {
+    const steps = Math.ceil(distance / maxGap);
+    
+    for (let i = 1; i < steps; i++) { // Skip i=0 and i=steps to avoid duplicates
+      const t = i / steps;
+      const x = x1 + (x2 - x1) * t;
+      const y = y1 + (y2 - y1) * t;
+      
+      if (is_erasing) {
+        context.clearRect(x - size/2, y - size/2, size, size);
+      } else {
+        context.fillStyle = stroke_color;
+        context.fillRect(x - size/2, y - size/2, size, size);
+      }
+    }
+  }
+  
+  // Always draw the current square
+  if (is_erasing) {
+    context.clearRect(x2 - size/2, y2 - size/2, size, size);
+  } else {
+    context.fillStyle = stroke_color;
+    context.fillRect(x2 - size/2, y2 - size/2, size, size);
+  }
+}
 
 
 
@@ -386,6 +434,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
