@@ -41,11 +41,11 @@
 
     <!-- Tools -->
     <div class="tool-group">
-        <label>Tools:</label>
-        <button onclick="toggleEraser()" id="eraser-btn" class="tool-btn">🧽</button>
-        <button onclick="Restore()" class="tool-btn">↶ Undo</button>
-        <button onclick="Clear()" class="tool-btn">✕ Clear</button>
-    </div>
+    <button onclick="setDrawMode()" id="draw-btn" class="tool-btn active-tool">✏️</button>
+    <button onclick="setEraseMode()" id="erase-btn" class="tool-btn">🧽</button>
+    <button onclick="Restore()" class="tool-btn">↶</button>
+    <button onclick="Clear()" class="tool-btn">✕</button>
+</div>
 </div>
                 
                 <div id="submission-form">
