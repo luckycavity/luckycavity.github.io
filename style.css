@@ -218,13 +218,13 @@ input[type="range"]::-moz-range-thumb {
 
 /* Add this CSS for the active tool state */
 .tool-btn.active-tool {
-    background-color: #007bff;
-    color: white;
-    border-color: #0056b3;
+    background-color: #e0e0ff;
+    color: black;
+    border-color: #6040ff;
 }
 
 .tool-btn.active-tool:hover {
-    background-color: #0056b3;
+    background-color: #bebeed;
 }
 
 
