@@ -264,6 +264,7 @@ input[type="range"]::-moz-range-thumb {
     cursor: pointer;
     font-size: 12px;
     margin-right: -1px;  /* Overlap borders */
+    touch-action: manipulation;
 }
 
 /* Bring hovered/active buttons to front */
