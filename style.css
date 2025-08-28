@@ -163,13 +163,15 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-    flex-wrap: wrap;
+    /* Removed flex-wrap: wrap */
+    overflow-x: auto; /* Allow horizontal scrolling on very small screens */
 }
 
 .tool-group {
     display: flex;
     align-items: center;
     gap: 8px;
+    flex-shrink: 0; /* Prevent groups from shrinking too much */
 }
 
 .tool-group label {
@@ -187,8 +189,6 @@
 .color-btn {
     width: 25px;
     height: 25px;
-    border: 2px solid #333;
-    border-radius: 50%;
     cursor: pointer;
 }
 
@@ -210,15 +210,23 @@
     background-color: #e6e6e6;
 }
 
-/* Mobile responsive - stack on small screens */
+/* Make color buttons and other elements smaller on mobile if needed */
 @media (max-width: 600px) {
     .drawing-tools {
-        flex-direction: column;
-        align-items: stretch;
         gap: 10px;
+        padding: 10px;
     }
     
     .tool-group {
-        justify-content: center;
+        gap: 5px;
+    }
+    
+    .color-btn {
+        width: 20px;
+        height: 20px;
+    }
+    
+    .tool-group label {
+        font-size: 11px;
     }
 }
