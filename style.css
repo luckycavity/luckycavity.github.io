@@ -173,7 +173,7 @@
 .tool-group {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 0px;
     flex-shrink: 0; /* Prevent groups from shrinking too much */
 }
 
@@ -257,7 +257,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .shape-btn, .tool-btn {
-    padding: 0px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 0px;
     background-color: white;
