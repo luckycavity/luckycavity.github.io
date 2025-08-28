@@ -229,7 +229,7 @@ input[type="range"]::-moz-range-thumb {
 
 
 
-.color-grid {
+.color-palette {
     display: grid;
     grid-template-columns: repeat(3, 25px); /* 3 columns */
     grid-template-rows: repeat(2, 25px);    /* 2 rows */
