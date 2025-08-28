@@ -89,19 +89,15 @@ function draw(event) {
   }
   
   context.lineWidth = stroke_width;
-  
-  // Handle brush shape
-  if (brush_shape === "round") {
-    // Use the original line drawing for round brush
-    context.lineTo(currentX, currentY);
-    context.lineCap = "round";
-    context.lineJoin = "round";
-    context.stroke();
-  } else {
-    // For square brush, draw filled squares along the path
-    drawSquarePath(lastX, lastY, currentX, currentY, stroke_width);
-  }
-  
+
+
+
+	
+ drawSquarePath(lastX, lastY, currentX, currentY, stroke_width);
+
+
+
+	
   // Update last position
   lastX = currentX;
   lastY = currentY;
@@ -395,15 +391,7 @@ async function fetchImages() {
 fetchImages();
 
 
-// Brush shape functionality
-let brush_shape = "round";
 
-function setBrushShape(shape) {
-    brush_shape = shape;
-    // Update button styles to show which is active
-    document.getElementById("round-brush").style.backgroundColor = shape === "round" ? "#ddd" : "";
-    document.getElementById("square-brush").style.backgroundColor = shape === "square" ? "#ddd" : "";
-}
 
 // Eraser functionality
 let is_erasing = false;
@@ -434,6 +422,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
