@@ -115,19 +115,23 @@ function stop(event) {
 
 function getX(event) {
   const rect = canvas.getBoundingClientRect();
-  if (event.pageX) {
-    return event.pageX - rect.left;
+  if (event.clientX !== undefined) {
+    // Mouse event
+    return event.clientX - rect.left;
   } else {
-    return event.targetTouches[0].pageX - rect.left;
+    // Touch event - use clientX instead of pageX
+    return event.targetTouches[0].clientX - rect.left;
   }
 }
 
 function getY(event) {
   const rect = canvas.getBoundingClientRect();
-  if (event.pageY) {
-    return event.pageY - rect.top;
+  if (event.clientY !== undefined) {
+    // Mouse event
+    return event.clientY - rect.top;
   } else {
-    return event.targetTouches[0].pageY - rect.top;
+    // Touch event - use clientY instead of pageY
+    return event.targetTouches[0].clientY - rect.top;
   }
 }
 
@@ -356,6 +360,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
