@@ -181,6 +181,20 @@
     margin: 0;
 }
 
+
+/* Add this CSS for the active tool state */
+.tool-btn.active-tool {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+.tool-btn.active-tool:hover {
+    background-color: #0056b3;
+}
+
+
+
 .color-palette {
     display: flex;
     gap: 3px;
