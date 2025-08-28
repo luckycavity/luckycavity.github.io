@@ -229,20 +229,27 @@ input[type="range"]::-moz-range-thumb {
 
 
 
-.color-palette {
-    display: flex;
-    gap: 3px;
+.color-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+    gap: 0;  /* No space between swatches */
+    width: 75px; /* 3 columns × 25px each */
+    height: 50px; /* 2 rows × 25px each */
 }
 
 .color-btn {
     width: 25px;
     height: 25px;
+    border: 2px solid #333;
     cursor: pointer;
+    /* Remove border-radius for square swatches with no gaps */
+    border-radius: 0;
 }
 
 .color-btn:hover {
     border-color: #666;
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .shape-btn, .tool-btn {
