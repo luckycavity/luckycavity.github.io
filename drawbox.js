@@ -135,13 +135,33 @@ function getY(event) {
   }
 }
 
-canvas.addEventListener("touchstart", start, false);
-canvas.addEventListener("touchmove", draw, false);
-canvas.addEventListener("touchend", stop, false);
+
+
+
+canvas.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    start(e);
+}, { passive: false });
+
+canvas.addEventListener("touchmove", function(e) {
+    e.preventDefault();
+    draw(e);
+}, { passive: false });
+
+canvas.addEventListener("touchend", function(e) {
+    e.preventDefault();
+    stop(e);
+}, { passive: false });
+
+// Keep the mouse events as they were
 canvas.addEventListener("mousedown", start, false);
 canvas.addEventListener("mousemove", draw, false);
 canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("mouseout", stop, false);
+
+
+
+
 
 function Restore() {
   if (start_index <= 0) {
@@ -360,6 +380,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
