@@ -193,6 +193,7 @@ input[type="range"] {
     height: 10px;
     background: white;
     outline: 1px black;
+        border:1px red;
 }
 
 /* Bigger cursor for Webkit browsers (Chrome, Safari, Edge) */
