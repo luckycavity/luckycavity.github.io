@@ -249,8 +249,8 @@ input[type="range"]::-moz-range-thumb {
 }
 
 .color-btn:hover {
-    border-color: #666;
     transform: scale(1.05);
+    z-index: 1; /* Bring hovered button above others */
 }
 
 .shape-btn, .tool-btn {
