@@ -330,20 +330,32 @@ function setBrushShape(shape) {
 // Eraser functionality
 let is_erasing = false;
 
-function toggleEraser() {
-    is_erasing = !is_erasing;
-    const eraserBtn = document.getElementById("eraser-btn");
+function setDrawMode() {
+    is_erasing = false;
     
-    if (is_erasing) {
-        eraserBtn.style.backgroundColor = "#ffcccc";
-        eraserBtn.textContent = "🧽 Drawing";
-        canvas.style.cursor = "grab";
-    } else {
-        eraserBtn.style.backgroundColor = "";
-        eraserBtn.textContent = "🧽 Eraser";
-        canvas.style.cursor = "crosshair";
-    }
+    // Update button styles
+    document.getElementById("draw-btn").classList.add("active-tool");
+    document.getElementById("erase-btn").classList.remove("active-tool");
+    
+    // Update cursor
+    canvas.style.cursor = "crosshair";
 }
+
+function setEraseMode() {
+    is_erasing = true;
+    
+    // Update button styles
+    document.getElementById("draw-btn").classList.remove("active-tool");
+    document.getElementById("erase-btn").classList.add("active-tool");
+    
+    // Update cursor
+    canvas.style.cursor = "grab";
+}
+
+// Initialize draw mode on page load
+document.addEventListener("DOMContentLoaded", function() {
+    setDrawMode(); // Start in draw mode
+});
 
 
 
