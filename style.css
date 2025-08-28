@@ -163,8 +163,11 @@
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #f9f9f9;
-    /* Removed flex-wrap: wrap */
     overflow-x: auto; /* Allow horizontal scrolling on very small screens */
+
+
+        width: 500px; /* Same as canvas width */
+        max-width: 100%;
 }
 
 .tool-group {
@@ -186,8 +189,8 @@
 /* Simple slider customization - bigger cursor, smaller width */
 input[type="range"] {
     -webkit-appearance: none;
-    width: 80px; /* Make slider narrower */
-    height: 4px;
+    width: 75px; /* Make slider narrower */
+    height: 6px;
     background: #ddd;
     outline: none;
 }
