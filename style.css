@@ -256,7 +256,7 @@ input[type="range"]::-moz-range-thumb {
     z-index: 1; /* Bring hovered button above others */
 }
 
-.shape-btn, .tool-btn {
+.tool-btn {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 0px;
@@ -267,16 +267,14 @@ input[type="range"]::-moz-range-thumb {
 }
 
 /* Bring hovered/active buttons to front */
-.shape-btn:hover, .tool-btn:hover,
+ .tool-btn:hover,
 .tool-btn.active-tool {
     position: relative;
     z-index: 1;
 }
 
 
-.shape-btn {font-size: 16px;}
-
-.shape-btn:hover, .tool-btn:hover {
+.tool-btn:hover {
     background-color: #e6e6e6;
 }
 
