@@ -115,23 +115,27 @@ function stop(event) {
 
 function getX(event) {
   const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width / rect.width; // Account for CSS scaling
+  
   if (event.clientX !== undefined) {
     // Mouse event
-    return event.clientX - rect.left;
+    return (event.clientX - rect.left) * scaleX;
   } else {
-    // Touch event - use clientX instead of pageX
-    return event.targetTouches[0].clientX - rect.left;
+    // Touch event
+    return (event.targetTouches[0].clientX - rect.left) * scaleX;
   }
 }
 
 function getY(event) {
   const rect = canvas.getBoundingClientRect();
+  const scaleY = canvas.height / rect.height; // Account for CSS scaling
+  
   if (event.clientY !== undefined) {
     // Mouse event
-    return event.clientY - rect.top;
+    return (event.clientY - rect.top) * scaleY;
   } else {
-    // Touch event - use clientY instead of pageY
-    return event.targetTouches[0].clientY - rect.top;
+    // Touch event
+    return (event.targetTouches[0].clientY - rect.top) * scaleY;
   }
 }
 
@@ -380,6 +384,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
