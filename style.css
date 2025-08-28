@@ -231,17 +231,15 @@ input[type="range"]::-moz-range-thumb {
 
 .color-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    grid-template-rows: repeat(2, 1fr);    /* 2 rows */
+    grid-template-columns: repeat(3, 25px); /* 3 columns */
+    grid-template-rows: repeat(2, 25px);    /* 2 rows */
     gap: 0;  /* No space between swatches */
-    width: 75px; /* 3 columns × 25px each */
-    height: 50px; /* 2 rows × 25px each */
 }
 
 .color-btn {
     width: 25px;
     height: 25px;
-    border: 2px solid #333;
+    border: 0px solid #333;
     cursor: pointer;
     /* Remove border-radius for square swatches with no gaps */
     border-radius: 0;
