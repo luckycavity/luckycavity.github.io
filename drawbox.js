@@ -114,7 +114,7 @@ function draw(event) {
 
 function drawSquarePath(x1, y1, x2, y2, size) {
   const distance = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
-  const maxGap = size * 0.5; // Only fill gaps if they're bigger than 80% of square size
+  const maxGap = size * 0.6; // Only fill gaps if they're bigger than 80% of square size
   
   if (distance > maxGap) {
     const steps = Math.ceil(distance / maxGap);
@@ -434,6 +434,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
