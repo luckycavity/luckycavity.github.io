@@ -40,9 +40,13 @@
     </div>
 
     <!-- Tools -->
-    <div class="tool-group">
-    <button onclick="setDrawMode()" id="draw-btn" class="tool-btn active-tool">✏️</button>
-    <button onclick="setEraseMode()" id="erase-btn" class="tool-btn">🧽</button>
+   <div class="tool-group">
+    <button onclick="setDrawMode()" id="draw-btn" class="tool-btn active-tool">
+        <img src="assets/icon-pencil.svg" alt="Draw" class="tool-icon">
+    </button>
+    <button onclick="setEraseMode()" id="erase-btn" class="tool-btn">
+        <img src="assets/icon-eraser.svg" alt="Erase" class="tool-icon">
+    </button>
     <button onclick="Restore()" class="tool-btn">↶</button>
     <button onclick="Clear()" class="tool-btn">✕</button>
 </div>
