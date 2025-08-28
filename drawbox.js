@@ -65,29 +65,31 @@ function start(event) {
 
 function draw(event) {
   if (!is_drawing) return;
-  context.lineTo(getX(event), getY(event));
   
-  // Handle eraser vs drawing (this needs to come first)
+  const x = getX(event);
+  const y = getY(event);
+  
+  // Handle eraser vs drawing
   if (is_erasing) {
     context.globalCompositeOperation = "destination-out";
-    context.strokeStyle = "rgba(0,0,0,1)"; // For eraser, color doesn't matter but we need something
+    context.fillStyle = "rgba(0,0,0,1)";
   } else {
     context.globalCompositeOperation = "source-over";
-    context.strokeStyle = stroke_color;
+    context.fillStyle = stroke_color;
   }
-  
-  context.lineWidth = stroke_width;
   
   // Handle brush shape
   if (brush_shape === "round") {
-    context.lineCap = "round";
-    context.lineJoin = "round";
+    // Draw round brush (circle)
+    context.beginPath();
+    context.arc(x, y, stroke_width / 2, 0, 2 * Math.PI);
+    context.fill();
   } else {
-    context.lineCap = "square";
-    context.lineJoin = "round";
+    // Draw square brush (always axis-aligned)
+    const size = stroke_width;
+    context.fillRect(x - size/2, y - size/2, size, size);
   }
   
-  context.stroke();
   event.preventDefault();
 }
 
@@ -384,6 +386,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
