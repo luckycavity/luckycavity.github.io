@@ -182,6 +182,40 @@
 }
 
 
+
+/* Simple slider customization - bigger cursor, smaller width */
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 80px; /* Make slider narrower */
+    height: 4px;
+    background: #ddd;
+    outline: none;
+}
+
+/* Bigger cursor for Webkit browsers (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; /* Bigger cursor */
+    height: 20px; /* Bigger cursor */
+    background: #666;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Bigger cursor for Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px; /* Bigger cursor */
+    height: 20px; /* Bigger cursor */
+    background: #666;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+
+
+
+
 /* Add this CSS for the active tool state */
 .tool-btn.active-tool {
     background-color: #007bff;
