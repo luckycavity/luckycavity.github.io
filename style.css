@@ -239,7 +239,7 @@ input[type="range"]::-moz-range-thumb {
 .color-btn {
     width: 25px;
     height: 25px;
-    border: 0px solid #333;
+    border: none;
     cursor: pointer;
     /* Remove border-radius for square swatches with no gaps */
     border-radius: 0;
