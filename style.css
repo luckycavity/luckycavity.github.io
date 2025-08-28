@@ -259,16 +259,18 @@ input[type="range"]::-moz-range-thumb {
 .shape-btn, .tool-btn {
     padding: 5px;
     border: 1px solid #ccc;
-        border-right:none;
     border-radius: 0px;
     background-color: white;
     cursor: pointer;
     font-size: 12px;
+    margin-right: -1px;  /* Overlap borders */
 }
 
-.tool-group .shape-btn:last-child,
-.tool-group .tool-btn:last-child {
-    border-right: 1px solid #ccc;
+/* Bring hovered/active buttons to front */
+.shape-btn:hover, .tool-btn:hover,
+.tool-btn.active-tool {
+    position: relative;
+    z-index: 1;
 }
 
 
