@@ -159,10 +159,10 @@
     align-items: center;
     gap: 20px;
     margin: 0;
-    padding: 15px;
-    border: 1px solid #ddd;
+    padding: none;
+    border: none;
     border-radius: 0px;
-    background-color: #f9f9f9;
+    background-color: none;
 
 
         width: 500px; /* Same as canvas width */
