@@ -159,7 +159,7 @@
     align-items: center;
     gap: 0px;
     margin: 0;
-    padding: none;
+    padding: 10px 0;
     border: none;
     border-radius: 0px;
     background-color: none;
@@ -285,7 +285,6 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 600px) {
        .drawing-tools {
         flex-wrap: wrap; /* Allow wrapping on very small screens */
-        padding: 10px;
     /* justify-content: space-between inherited from main rule */
     }
     
@@ -312,7 +311,7 @@ input[type="range"]::-moz-range-thumb {
     
     input[type="range"] {
         width: 60px; /* Make slider even smaller on mobile */
-            border: 1px solid black;
+     border: 1px solid black;
             
     }
 }
