@@ -192,7 +192,7 @@ input[type="range"] {
     height: 10px;
     background: white;
     outline: none;
-    border: 1px solid black;
+    border: 2px solid black;
     border-radius: 50%;
 }
 
@@ -312,6 +312,7 @@ input[type="range"]::-moz-range-thumb {
     
     input[type="range"] {
         width: 60px; /* Make slider even smaller on mobile */
+            border-radius: 1px solid black;
     }
 }
 
