@@ -71,6 +71,19 @@ function updateBrushSize(value, source) {
     }
 }
 
+// Add event listeners when page loads
+document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById('brush-slider').addEventListener('input', function() {
+        updateBrushSize(this.value, 'slider');
+    });
+    
+    document.getElementById('brush-input').addEventListener('input', function() {
+        updateBrushSize(this.value, 'input');
+    });
+    
+    setDrawMode(); // Your existing code
+});
+
 
 
 
@@ -453,6 +466,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
