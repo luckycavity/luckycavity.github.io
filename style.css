@@ -289,7 +289,7 @@ input[type="range"]::-moz-range-thumb {
     }
     
     .tool-group {
-        gap: 5px;
+        gap: 0px;
         flex-shrink: 1;
     }
     
