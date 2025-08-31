@@ -193,7 +193,6 @@ input[type="range"] {
     background: white;
     outline: none;
     border: 1px solid black;
-    border-radius: 50%;
 }
 
 /* Bigger cursor for Webkit browsers (Chrome, Safari, Edge) */
@@ -314,7 +313,6 @@ input[type="range"]::-moz-range-thumb {
         width: 60px; /* Make slider even smaller on mobile */
             border: 1px solid black;
             
-    border-radius: none;
     }
 }
 
