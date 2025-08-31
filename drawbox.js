@@ -235,6 +235,15 @@ context.drawImage = function() {
 	console.warn("noo >:(");
 };
 
+// Add Ctrl+Z keyboard shortcut for undo
+document.addEventListener("keydown", function(event) {
+    // Check if Ctrl+Z is pressed (or Cmd+Z on Mac)
+    if ((event.ctrlKey || event.metaKey) && event.key === 'z' && !event.shiftKey) {
+        event.preventDefault(); // Prevent browser's default undo
+        Restore(); // Call the existing undo function
+    }
+});
+
 document.getElementById("submit").addEventListener("click", async function () {
   const submitButton = document.getElementById("submit");
   const statusText = document.getElementById("status");
@@ -422,6 +431,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
