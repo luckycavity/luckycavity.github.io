@@ -57,6 +57,25 @@ function change_color(element) {
   stroke_color = element.style.background;
 }
 
+
+
+
+function updateBrushSize(value, source) {
+    stroke_width = value;
+    
+    // Update both inputs to stay in sync
+    if (source === 'slider') {
+        document.getElementById('brush-input').value = value;
+    } else if (source === 'input') {
+        document.getElementById('brush-slider').value = value;
+    }
+}
+
+
+
+
+
+
 function start(event) {
   is_drawing = true;
   const x = getX(event);
@@ -92,6 +111,9 @@ function draw(event) {
 
 
 
+
+
+	
 	
  drawSquarePath(lastX, lastY, currentX, currentY, stroke_width);
 
@@ -431,6 +453,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
