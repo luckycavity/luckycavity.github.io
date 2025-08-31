@@ -258,6 +258,35 @@ input[type="range"]::-moz-range-thumb {
     z-index: 1; /* Bring hovered button above others */
 }
 
+
+
+
+
+
+.brush-size-input {
+    width: 40px;
+    height: 25px;
+    margin-left: 5px;
+    text-align: center;
+    font-size: 11px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+/* Make it smaller on mobile */
+@media (max-width: 600px) {
+    .brush-size-input {
+        width: 35px;
+        height: 20px;
+        font-size: 10px;
+    }
+}
+
+
+
+
+
 .tool-btn {
     padding: 5px;
     border: 1px solid #ccc;
@@ -320,3 +349,6 @@ input[type="range"]::-moz-range-thumb {
 #drawboxcanvas {
     touch-action: none; /* Prevents scrolling/zooming on the canvas */
 }
+
+
+
