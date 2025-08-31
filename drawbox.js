@@ -46,7 +46,7 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 let restore_array = [];
 let start_index = -1;
 let stroke_color = "black";
-let stroke_width = "2";
+let stroke_width = "8";
 let is_drawing = false;
 
 
@@ -431,6 +431,7 @@ function setEraseMode() {
 document.addEventListener("DOMContentLoaded", function() {
     setDrawMode(); // Start in draw mode
 });
+
 
 
 
