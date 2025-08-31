@@ -157,7 +157,7 @@
 .drawing-tools {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 0px;
     margin: 0;
     padding: none;
     border: none;
@@ -167,6 +167,7 @@
 
         width: 500px; /* Same as canvas width */
         max-width: 100%;
+        justify-content: space-between;
 }
 
 .tool-group {
@@ -284,9 +285,8 @@ input[type="range"]::-moz-range-thumb {
 @media (max-width: 600px) {
        .drawing-tools {
         flex-wrap: wrap; /* Allow wrapping on very small screens */
-        gap: 10px;
         padding: 10px;
-        justify-content: center; /* Center the tools */
+    /* justify-content: space-between inherited from main rule */
     }
     
     .tool-group {
